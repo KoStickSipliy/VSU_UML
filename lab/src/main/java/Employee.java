@@ -1,31 +1,41 @@
 package main.java;
 
 abstract class Employee {
-    protected static int counter = 0;
 
-    protected int ssNo; // социальный код
-    protected String name;
-    protected String email;
-    protected int employeeId;
+	protected static int counter = 0;
+	protected int ssNo;
+	/**
+	 * социальный код
+	 */
+	protected String name;
+	protected String email;
+	protected int employeeId;
 
-    public Employee(int ssNo, String name, String email) {
-        this.ssNo = ssNo;
-        this.name = name;
-        this.email = email;
-        this.employeeId = ++counter;
-    }
+	public String getName() {
+		return this.name;
+	}
 
-    public abstract void displayInfo();
+	public int getEmployeeId() {
+		return this.employeeId;
+	}
 
-    public String getName() {
-        return name;
-    }
+	/**
+	 * 
+	 * @param ssNo
+	 * @param name
+	 * @param email
+	 */
+	public Employee(int ssNo, String name, String email) {
+		this.ssNo = ssNo;
+		this.name = name;
+		this.email = email;
+		this.employeeId = ++counter;
+	}
 
-    public int getEmployeeId() {
-        return employeeId;
-    }
+	public abstract void displayInfo();
 
-    public static int getTotalEmployees() {
-        return counter;
-    }
+	public static int getTotalEmployees() {
+		return counter;
+	}
+
 }

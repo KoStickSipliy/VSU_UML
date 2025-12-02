@@ -1,27 +1,37 @@
 package main.java;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class University {
-    private String name;
-    private List<Faculty> faculties;
 
-    public University(String name) {
-        this.name = name;
-        this.faculties = new ArrayList<>();
-    }
+	private String name;
+	private Collection<Faculty> faculties;
 
-    public void addFaculty(Faculty faculty) {
-        faculties.add(faculty);
-    }
+	/**
+	 * 
+	 * @param name
+	 */
+	public University(String name) {
+		this.name = name;
+		this.faculties = new ArrayList<>();
+	}
 
-    public void displayUniversityInfo() {
-        System.out.println("Университет: " + name);
-        System.out.println("Факультеты:");
-        for (Faculty faculty : faculties) {
-            faculty.displayFacultyInfo();
-        }
-        System.out.println("Всего сотрудников: " + Employee.getTotalEmployees());
-    }
+	/**
+	 * 
+	 * @param faculty
+	 */
+	public void addFaculty(Faculty faculty) {
+		if (faculty == null) return;
+		if (this.faculties == null) this.faculties = new ArrayList<>();
+		if (!this.faculties.contains(faculty)) this.faculties.add(faculty);
+	}
+
+	public void displayUniversityInfo() {
+		System.out.println("University: " + this.name);
+		if (faculties != null) {
+			System.out.println(" Faculties:");
+			for (Faculty f : faculties) f.displayFacultyInfo();
+		}
+	}
+
 }

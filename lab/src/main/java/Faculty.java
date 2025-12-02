@@ -1,39 +1,47 @@
 package main.java;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Faculty {
-    private String name;
-    private Dean dean;
-    private List<Institute> institutes;
 
-    public Faculty(String name) {
-        this.name = name;
-        this.institutes = new ArrayList<>();
-    }
+	private String name;
+	private Dean dean;
+	private Collection<Institute> institutes;
 
-    public void setDean(Dean dean) {
-        this.dean = dean;
-        System.out.println("Деканом факультета " + name + " назначен: " + dean.getName());
-    }
+	public String getName() {
+		return this.name;
+	}
 
-    public void addInstitute(Institute institute) {
-        institutes.add(institute);
-    }
+	public void setDean(Dean dean) {
+		this.dean = dean;
+	}
 
-    public void displayFacultyInfo() {
-        System.out.println("Факультет: " + name);
-        if (dean != null) {
-            System.out.println("Декан: " + dean.getName());
-        }
-        System.out.println("Кафедры:");
-        for (Institute inst : institutes) {
-            System.out.println("  - " + inst.getName());
-        }
-    }
+	/**
+	 * 
+	 * @param name
+	 */
+	public Faculty(String name) {
+		this.name = name;
+		this.institutes = new ArrayList<>();
+	}
 
-    public String getName() {
-        return name;
-    }
+	/**
+	 * 
+	 * @param institute
+	 */
+	public void addInstitute(Institute institute) {
+		if (institute == null) return;
+		if (this.institutes == null) this.institutes = new ArrayList<>();
+		if (!this.institutes.contains(institute)) this.institutes.add(institute);
+	}
+
+	public void displayFacultyInfo() {
+		System.out.println("Faculty: " + this.name);
+		if (dean != null) System.out.println(" Dean: " + dean.getName());
+		if (institutes != null) {
+			System.out.println(" Institutes:");
+			for (Institute i : institutes) System.out.println("  - " + i.getName());
+		}
+	}
+
 }
