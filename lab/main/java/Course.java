@@ -23,7 +23,7 @@ public class Course {
 	}
 
 	public void displayCourseInfo() {
-		System.out.println("Course: " + name + " (ID: " + id + ") weekly hours: " + weeklyHours);
+		System.out.println("Course: " + this.name + " (id=" + id + ", weeklyHours=" + weeklyHours + ")");
 	}
 
 }

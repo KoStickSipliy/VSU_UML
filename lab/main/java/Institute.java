@@ -20,7 +20,7 @@ public class Institute {
 	public Institute(String name, String address) {
 		this.name = name;
 		this.address = address;
-		this.researchers = new ArrayList<>();
+		this.researchers = new ArrayList<ResearchAssociate>();
 	}
 
 	/**
@@ -28,19 +28,18 @@ public class Institute {
 	 * @param researcher
 	 */
 	public void addResearcher(ResearchAssociate researcher) {
-		if (researcher == null) return;
-		if (this.researchers == null) this.researchers = new ArrayList<>();
-		if (!this.researchers.contains(researcher)) {
-			this.researchers.add(researcher);
-			researcher.addInstitute(this);
-		}
+		if (this.researchers == null) this.researchers = new ArrayList<ResearchAssociate>();
+		this.researchers.add(researcher);
 	}
 
 	public void displayInstituteInfo() {
-		System.out.println("Institute: " + this.name + " (" + this.address + ")");
-		if (researchers != null) {
-			System.out.println(" Researchers:");
-			for (ResearchAssociate r : researchers) System.out.println("  - " + r.getName());
+		System.out.println("Institute: " + this.name);
+		System.out.println("  Address: " + this.address);
+		if (researchers != null && !researchers.isEmpty()) {
+			System.out.println("  Researchers:");
+			for (ResearchAssociate r : researchers) {
+				System.out.println("   - " + (r != null ? r.getName() : "<null>"));
+			}
 		}
 	}
 

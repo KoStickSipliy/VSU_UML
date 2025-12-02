@@ -17,9 +17,9 @@ class SimpleDate {
 		this.date = java.time.LocalDate.of(year, month, day);
 	}
 
-	@Override
+	@Override()
 	public String toString() {
-		return date.toString();
+		return date.getDayOfMonth() + "." + date.getMonthValue() + "." + date.getYear();
 	}
 
 }

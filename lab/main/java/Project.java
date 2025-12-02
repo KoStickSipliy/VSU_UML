@@ -23,7 +23,7 @@ public class Project {
 		this.name = name;
 		this.startDate = start;
 		this.endDate = end;
-		this.participations = new ArrayList<>();
+		this.participations = new ArrayList<Participation>();
 	}
 
 	/**
@@ -31,17 +31,19 @@ public class Project {
 	 * @param p
 	 */
 	public void addParticipation(Participation p) {
-		if (p == null) return;
-		if (this.participations == null) this.participations = new ArrayList<>();
-		if (!this.participations.contains(p)) this.participations.add(p);
+		if (this.participations == null) this.participations = new ArrayList<Participation>();
+		this.participations.add(p);
 	}
 
 	public void displayProjectInfo() {
 		System.out.println("Project: " + this.name);
-		System.out.println(" Start: " + (startDate != null ? startDate.toString() : "n/a") + " End: " + (endDate != null ? endDate.toString() : "n/a"));
-		if (participations != null) {
-			System.out.println(" Participations:");
-			for (Participation p : participations) p.displayParticipation();
+		System.out.println("  Start: " + (startDate != null ? startDate.toString() : "<null>"));
+		System.out.println("  End: " + (endDate != null ? endDate.toString() : "<null>"));
+		if (participations != null && !participations.isEmpty()) {
+			System.out.println("  Participations:");
+			for (Participation p : participations) {
+				if (p != null) p.displayParticipation();
+			}
 		}
 	}
 

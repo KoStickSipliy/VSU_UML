@@ -15,17 +15,23 @@ class Dean extends ResearchAssociate {
 	public Dean(int ssNo, String name, String email, String fieldOfStudy, Faculty faculty) {
 		super(ssNo, name, email, fieldOfStudy);
 		this.faculty = faculty;
-		if (this.faculty != null) this.faculty.setDean(this);
+		if (faculty != null) faculty.setDean(this);
 	}
 
 	public void manageFaculty() {
-		System.out.println("Dean " + this.name + " managing faculty: " + (faculty != null ? faculty.getName() : "n/a"));
+		if (faculty != null) {
+			System.out.println("Dean " + this.getName() + " manages faculty " + faculty.getName());
+			faculty.displayFacultyInfo();
+		} else {
+			System.out.println("No faculty assigned to dean " + this.getName());
+		}
 	}
 
-	@Override
+	@Override()
 	public void displayInfo() {
+		System.out.println("Dean:");
 		super.displayInfo();
-		System.out.println(" Faculty: " + (faculty != null ? faculty.getName() : "n/a"));
+		if (faculty != null) System.out.println("  Faculty: " + faculty.getName());
 	}
 
 }

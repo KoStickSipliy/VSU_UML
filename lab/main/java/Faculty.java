@@ -22,7 +22,7 @@ public class Faculty {
 	 */
 	public Faculty(String name) {
 		this.name = name;
-		this.institutes = new ArrayList<>();
+		this.institutes = new ArrayList<Institute>();
 	}
 
 	/**
@@ -30,17 +30,20 @@ public class Faculty {
 	 * @param institute
 	 */
 	public void addInstitute(Institute institute) {
-		if (institute == null) return;
-		if (this.institutes == null) this.institutes = new ArrayList<>();
-		if (!this.institutes.contains(institute)) this.institutes.add(institute);
+		if (this.institutes == null) this.institutes = new ArrayList<Institute>();
+		this.institutes.add(institute);
 	}
 
 	public void displayFacultyInfo() {
 		System.out.println("Faculty: " + this.name);
-		if (dean != null) System.out.println(" Dean: " + dean.getName());
-		if (institutes != null) {
-			System.out.println(" Institutes:");
-			for (Institute i : institutes) System.out.println("  - " + i.getName());
+		if (dean != null) {
+			System.out.println("  Dean: " + dean.getName());
+		}
+		if (institutes != null && !institutes.isEmpty()) {
+			System.out.println("  Institutes:");
+			for (Institute i : institutes) {
+				System.out.println("   - " + (i != null ? i.getName() : "<null>"));
+			}
 		}
 	}
 

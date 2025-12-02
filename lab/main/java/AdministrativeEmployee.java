@@ -16,10 +16,14 @@ class AdministrativeEmployee extends Employee {
 		this.department = department;
 	}
 
-	@Override
+	@Override()
 	public void displayInfo() {
-		System.out.println("AdministrativeEmployee: " + this.name + " (ID: " + this.employeeId + ")");
-		System.out.println(" Email: " + this.email + "; Department: " + this.department);
+		System.out.println("Administrative Employee:");
+		System.out.println("  Name: " + this.name);
+		System.out.println("  Employee ID: " + this.employeeId);
+		System.out.println("  SSN: " + this.ssNo);
+		System.out.println("  Email: " + this.email);
+		System.out.println("  Department: " + this.department);
 	}
 
 }
